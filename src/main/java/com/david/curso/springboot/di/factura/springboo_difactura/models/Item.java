@@ -29,4 +29,7 @@ public class Item {
         this.quatity = quatity;
     }
 
+    public int getImporte() {
+        return this.quatity * product.getPrice();
+    }
 }
