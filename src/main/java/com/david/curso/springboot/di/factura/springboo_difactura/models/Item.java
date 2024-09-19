@@ -5,6 +5,14 @@ public class Item {
     private Product product;
     private Integer quatity;
 
+    public Item() {
+    }
+
+    public Item(Product product, Integer quatity) {
+        this.product = product;
+        this.quatity = quatity;
+    }
+
     public Product getProduct() {
         return product;
     }
