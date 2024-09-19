@@ -3,6 +3,7 @@ package com.david.curso.springboot.di.factura.springboo_difactura.models;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ public class Invoice {
     private String description;
 
     @Autowired
+    @Qualifier("itemsInvoice")
     private List<Item> items;
 
     public Client getClient() {
@@ -42,4 +44,15 @@ public class Invoice {
         this.items = items;
     }
 
+    public int getTotal() {
+        /*
+         * int total = 0;
+         * for (Item item : items) {
+         * total = total + item.getImporte();
+         * }
+         * return total;
+         */
+        int total = items.stream().map(item -> item.getImporte()).reduce(0, (sum, importe) -> sum + importe);
+        return total;
+    }
 }
