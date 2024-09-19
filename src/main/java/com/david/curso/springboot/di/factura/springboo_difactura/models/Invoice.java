@@ -2,6 +2,9 @@ package com.david.curso.springboot.di.factura.springboo_difactura.models;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Invoice {
 
     private Client client;
