@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Component
 public class Invoice {
@@ -29,6 +30,11 @@ public class Invoice {
         client.setName(client.getName().concat(" Pepe"));
         description = description.concat(" del cliente: ")
                 .concat(client.getName().concat(" ").concat(client.getLastname()));
+    }
+
+    @PreDestroy
+    public void destroy() {
+        System.out.println("Destruyendo el componente o bean");
     }
 
     public Client getClient() {
